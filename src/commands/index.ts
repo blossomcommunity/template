@@ -1,7 +1,8 @@
 import {Command} from "../types";
 import {ping} from "./ping";
+import {redisExample} from "./redis-example";
 
-export const commands: Command[] = [ping];
+export const commands: Command[] = [ping, redisExample];
 
 const commandsWithAliases = commands.reduce((all, command) => {
   // Dedupe aliases
