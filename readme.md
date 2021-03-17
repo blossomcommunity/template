@@ -37,7 +37,11 @@ export const ping: Command = {
 
 ## Development
 
-## Scripts
+### Database Migrations
+
+We use [prisma](https://prisma.io) migrations for editing your database schema. It's super easy to get started, simply run `yarn migrate` to edit your database in development, and when you are ready to deploy, you can run `yarn migrate:deploy` to edit your production schema. You can [read more about prisma migrate here](https://www.prisma.io/docs/concepts/components/prisma-migrate).
+
+### Scripts
 
 You can use `yarn dev` to start the app in development mode. It uses hot reloading and will even set the environment variable `NODE_ENV` to development.
 
