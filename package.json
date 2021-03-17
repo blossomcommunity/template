@@ -1,0 +1,43 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/blossomcommunity/template.git",
+  "author": "Jack LaFond <jack.lafond@icloud.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/ioredis": "^4.22.0",
+    "@types/node": "^14.14.35",
+    "@types/node-fetch": "^2.5.8",
+    "@types/signale": "^1.4.1",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "prettier": "^2.2.1",
+    "prisma": "^2.19.0",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.19.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "ioredis": "^4.24.2",
+    "node-fetch": "^2.6.1",
+    "signale": "^1.4.0",
+    "zod": "^1.11.11"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --exit-child src/index.ts",
+    "build": "tsc",
+    "start": "node .",
+    "generate": "prisma generate",
+    "lint": "eslint .",
+    "services:up": "docker-compose up -d",
+    "services:down": "docker-compose down -d",
+    "services:start": "docker-compose start -d",
+    "services:stop": "docker-compose stop",
+    "migrate": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy"
+  }
+}
