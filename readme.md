@@ -8,6 +8,24 @@ A super basic Discord bot template using redis, discord.js, postgres & prisma.
 - Node, NPM & Yarn
 - Docker _(optional)_
 
+## Commands
+
+The command system is really robust, you can specify an array of aliases, description, and even a syntax. To add a new command, create it under the `src/commands` folder (view an example under `src/commands.ping.ts`) and then add it to the `commands` array under `src/commands/index.ts`. No extra effort required, just add it to the array!
+
+### Example
+
+```typescript
+export const ping: Command = {
+  aliases: ["ping", "pi"],
+  description: "Checks that the bot is online",
+  syntax: "<message>",
+  inhibitors: [],
+  async run(message, args) {
+    await message.reply(args.join(" "));
+  },
+};
+```
+
 ## Downloading
 
 1. Hit "Use this template" in the top right
