@@ -34,7 +34,7 @@
     "start": "cross-env NODE_ENV=production node .",
     "generate": "prisma generate",
     "lint": "eslint .",
-    "services:up": "docker-compose up -d",
+    "services:up": "docker-compose up -d&&yarn migrate",
     "services:down": "docker-compose down",
     "services:start": "docker-compose start",
     "services:stop": "docker-compose stop",
