@@ -6,11 +6,13 @@ import {StandardEmbed} from "./structs/standard-embed";
 import signale from "signale";
 import {prisma} from "./prisma";
 import {redis} from "./redis";
+import {isDev} from "./constants";
 
 const client = new Client();
 const prefix = process.env.PREFIX || "--";
 
 client.on("ready", () => {
+  signale.info("Environment:", isDev ? "dev" : "prod");
   signale.success("Ready as", client.user?.tag);
 });
 
