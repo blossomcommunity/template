@@ -34,8 +34,8 @@
     "generate": "prisma generate",
     "lint": "eslint .",
     "services:up": "docker-compose up -d",
-    "services:down": "docker-compose down -d",
-    "services:start": "docker-compose start -d",
+    "services:down": "docker-compose down",
+    "services:start": "docker-compose start",
     "services:stop": "docker-compose stop",
     "migrate": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy"
