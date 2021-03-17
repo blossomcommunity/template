@@ -63,7 +63,13 @@ client.on("message", async message => {
     return message.reply("⚠ Unknown Command");
   }
 
+  const inhibitors = Array.isArray(command.inhibitors) ? command.inhibitors : [command.inhibitors];
+
   try {
+    for (const inhibitor of inhibitors) {
+      inhibitor(message);
+    }
+
     await command.run(message, args);
   } catch (e) {
     await message.reply(`⚠ ${e.message}`);
