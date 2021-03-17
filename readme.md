@@ -37,6 +37,16 @@ export const ping: Command = {
 
 ## Development
 
+### Extra dependencies
+
+This template comes preinstalled with [colinhacks/zod](https://github.com/colinhacks/zod) for validation, and [node-fetch/node-fetch](https://github.com/node-fetch/node-fetch) for making HTTP requests to other services. If you don't want to use them, you can remove all traces of them with the following command.
+
+```
+yarn remove node-fetch @types/node-fetch zod
+```
+
+There is also [klaussinani/signale](https://github.com/klaussinani/signale) for logging. You can remove this, but we recommend against it since it's setup in some files already. To remove it, run `yarn remove signale @types/signale`
+
 ### Database Migrations
 
 We use [prisma](https://prisma.io) migrations for editing your database schema. It's super easy to get started, simply run `yarn migrate` to edit your database in development, and when you are ready to deploy, you can run `yarn migrate:deploy` to edit your production schema. You can [read more about prisma migrate here](https://www.prisma.io/docs/concepts/components/prisma-migrate).
