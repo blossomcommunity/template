@@ -1,4 +1,4 @@
-import {Command} from "../types";
+import {Command} from "../../types/command";
 
 export const ping: Command = {
   aliases: ["ping", "pi"],

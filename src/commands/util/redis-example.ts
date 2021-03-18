@@ -1,5 +1,5 @@
-import {wrapRedis} from "../redis";
-import {Command} from "../types";
+import {wrapRedis} from "../../services/redis";
+import {Command} from "../../types/command";
 
 export const redisExample: Command = {
   aliases: ["redis-example"],

@@ -3,10 +3,10 @@ import "dotenv/config";
 import {Client, EmbedField} from "discord.js";
 import {aliases, commands} from "./commands";
 import {StandardEmbed} from "./structs/standard-embed";
-import signale from "signale";
-import {prisma} from "./prisma";
-import {redis} from "./redis";
+import {prisma} from "./services/prisma";
+import {redis} from "./services/redis";
 import {isDev} from "./constants";
+import signale from "signale";
 
 const client = new Client();
 const prefix = process.env.PREFIX || "--";
@@ -67,7 +67,7 @@ client.on("message", async message => {
 
   try {
     for (const inhibitor of inhibitors) {
-      inhibitor(message);
+      await inhibitor(message, args);
     }
 
     await command.run(message, args);

@@ -10,5 +10,8 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["@typescript-eslint"],
-  rules: {},
+  rules: {
+    // Safe to use with inhibitors
+    "@typescript-eslint/no-non-null-assertion": "off",
+  },
 };

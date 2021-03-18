@@ -26,6 +26,32 @@ export const ping: Command = {
 };
 ```
 
+### Inhibitors
+
+Inhibitors are a way of ensuring a certain condition is met before a command is executed. They are ran in order if you pass an array.
+
+Here's an example:
+
+```typescript
+import {Inhibitor} from "../types/command";
+
+export const guilds: Inhibitor = message => {
+  if (!message.guild) {
+    throw new Error("You must use this command in a server.");
+  }
+};
+```
+
+This inhibitor throws an error if this command was not used in a guild. Nice! We can use it in our ping command above by importing it into our file, and adding it to our inhibitors property.
+
+```typescript
+import {guilds} from "../inhibitors/guilds";
+
+export const ping: Command = {
+  inhibitors: [guilds],
+  ...
+```
+
 ## Downloading
 
 1. Hit "Use this template" in the top right
