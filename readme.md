@@ -1,6 +1,6 @@
 # `template`
 
-A super basic Discord bot template using redis, discord.js, postgres & prisma.
+A super basic Discord bot template using redis, discord.js, postgres & prisma. The bot comes with a few commands premade, but you can strip them out by removing them in the `src/commands` folder.
 
 ## Prerequsites
 
@@ -28,7 +28,7 @@ export const ping: Command = {
 
 ### Inhibitors
 
-Inhibitors are a way of ensuring a certain condition is met before a command is executed. They are ran in order if you pass an array.
+Inhibitors are a way of ensuring a certain condition is met before a command is executed. They can even be async!
 
 Here's an example:
 
@@ -44,12 +44,12 @@ export const guilds: Inhibitor = message => {
 
 This inhibitor throws an error if this command was not used in a guild. Nice! We can use it in our ping command above by importing it into our file, and adding it to our inhibitors property.
 
-```typescript
+```ts
 import {guilds} from "../inhibitors/guilds";
 
 export const ping: Command = {
-  inhibitors: [guilds],
-  ...
+  inhibitors: guilds, // Or, use an array for multiple. They will be executed in order.
+};
 ```
 
 ## Downloading
