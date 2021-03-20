@@ -39,6 +39,9 @@
     "services:start": "docker-compose start",
     "services:stop": "docker-compose stop",
     "migrate": "prisma migrate dev",
-    "migrate:deploy": "prisma migrate deploy"
+    "migrate:deploy": "prisma migrate deploy",
+    "up:prod": "docker-compose -f docker-compose.prod.yml up --build -d",
+    "down:prod": "docker-compose -f docker-compose.prod.yml down",
+    "prod": "yarn migrate:deploy && yarn start"
   }
 }
