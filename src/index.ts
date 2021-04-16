@@ -5,11 +5,10 @@ import {aliases, commands} from "./commands";
 import {StandardEmbed} from "./structs/standard-embed";
 import {prisma} from "./services/prisma";
 import {redis} from "./services/redis";
-import {isDev} from "./constants";
+import {isDev, prefix} from "./constants";
 import signale from "signale";
 
 const client = new Client();
-const prefix = process.env.PREFIX || "--";
 
 client.on("ready", () => {
   signale.info("Environment:", isDev ? "dev" : "prod");
@@ -27,7 +26,7 @@ client.on("message", async message => {
     const command = aliases.get(args[0]);
 
     if (!command) {
-      return message.reply("⚠ Unknown Command");
+      return message.reply(`⚠ Unknown Command. Use \`${prefix}help\` to see all commands`);
     }
 
     const embed = new StandardEmbed(message.author)
@@ -42,15 +41,17 @@ client.on("message", async message => {
   }
 
   if (commandName === "help") {
-    const fields: EmbedField[] = commands.map(command => {
-      const name = command.aliases[0];
+    const fields: EmbedField[] = commands
+      .filter(c => !c.hideInHelpMenu)
+      .map(command => {
+        const name = command.aliases[0];
 
-      return {
-        name: prefix + name,
-        value: command.description,
-        inline: false,
-      };
-    });
+        return {
+          name: prefix + name,
+          value: command.description,
+          inline: false,
+        };
+      });
 
     const embed = new StandardEmbed(message.author).addFields(fields);
 

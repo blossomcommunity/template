@@ -25,6 +25,11 @@ export interface Command {
   aliases: string[];
 
   /**
+   * Whether this command should be shown in the help menu or not. This is useful for development/sysadmin commands etc
+   */
+  hideInHelpMenu?: boolean;
+
+  /**
    * Executor for this command
    * @param message The message object
    * @param args An array of arguments (the message content split by a space)
