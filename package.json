@@ -34,14 +34,14 @@
     "start": "cross-env NODE_ENV=production node .",
     "generate": "prisma generate",
     "lint": "eslint .",
-    "services:up": "docker-compose up -d&&yarn migrate",
-    "services:down": "docker-compose down",
-    "services:start": "docker-compose start",
-    "services:stop": "docker-compose stop",
+    "services:up": "docker-compose -f docker-compose.dev.yml up -d&&yarn migrate",
+    "services:down": "docker-compose -f docker-compose.dev.yml down",
+    "services:start": "docker-compose -f docker-compose.dev.yml start",
+    "services:stop": "docker-compose -f docker-compose.dev.yml stop",
     "migrate": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
-    "up:prod": "docker-compose -f docker-compose.prod.yml up --build -d",
-    "down:prod": "docker-compose -f docker-compose.prod.yml down",
+    "up:prod": "docker-compose up --build -d",
+    "down:prod": "docker-compose down",
     "prod": "yarn migrate:deploy && yarn start"
   }
 }
