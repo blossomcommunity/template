@@ -20,6 +20,10 @@ export const ping: Command = {
   description: "Checks that the bot is online",
   syntax: "<message>",
   inhibitors: [],
+  // An optional boolean whether to show this in the help menu or not.
+  // You do not have to include this property as commands are shown by default
+  // true = hidden, false = shown
+  hideInHelpMenu: false,
   async run(message, args) {
     await message.reply(args.join(" "));
   },
